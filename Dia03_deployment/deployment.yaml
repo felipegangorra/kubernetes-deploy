@@ -1,0 +1,43 @@
+# Terceiro dia - Deployment padrão
+
+# OBS: o .yaml base foi alterado durante a prática. A versão final é diferente da original
+
+apiVersion: apps/v1   #versão da api
+kind: Deployment    #tipo do objeto
+metadata:
+  labels:
+    app: nginx-deployment
+  name: nginx-deployment    #nome do nosso deployment
+spec:
+  replicas: 10   # quantidade de pods que ele vai manter
+  selector:
+    matchLabels:
+      app: nginx-deployment
+
+  #strategy: {}      # estrategia para atualizar os pods (padrão)
+  
+  #strategy:
+  #  type: RollingUpdate     # estrategia para atualizar o pod por vez (ou grupo por vez)
+  #  rollingUpdate:  
+  #    maxSurge: 1         # define a quantidade máxima de Pods que podem ser criados a mais durante a atualização
+  #    maxUnavailable: 2   # define a quantidade máxima de Pods que podem ficar indisponíveis durante a atualização
+
+  strategy:
+    type: Recreate  # remove todos os pods do deployment e cria novos com a atualização, não se pode definir parametros para essa estrategia.
+
+  template:         # template do pod
+    metadata:
+      labels:
+        app: nginx-deployment
+        version: v1
+    spec:
+      containers:
+      - image: nginx:1.15.0
+        name: nginx
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 256Mi
+          requests:
+            cpu: "0.25"
+            memory: 128Mi
