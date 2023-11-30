@@ -35,3 +35,8 @@ kubectl describe deployment 'nginx-deployment'
 ``` bash
 kubectl apply -f 'deployment.yaml'
 ```
+
+###### Deletar um deploymente
+``` bash
+kubectl delete deployment 'deploymente.yaml'
+```

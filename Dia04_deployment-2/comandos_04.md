@@ -1,37 +1,48 @@
 ### Comandos deployment: ReplicaSet e DaemonSet
 ---
 
-###### 
+###### Visualizar o replicaSet do deployment
 ``` bash
-
+kubectl get replicasets
 ```
 
-###### Get deployment
+###### Visualizar o DaemonSet
 ``` bash
-kubectl get deployments -l 'app=nginx-deployment'
+kubectl get daemonset
 ```
 
-###### Pods do deployment
+###### Visualizar pods que o DaemonSet gerencia
 ``` bash
-kubectl get pods -l 'app=nginx-deployment'
+kubectl get pods -l 'app=node-exporter'
 ```
 
-###### Get ReplicaSet do deployment
+###### Visualizar detalhes do DaemonSet
 ``` bash
-kubectl get replicasets -l 'app=nginx-deployment'
+kubectl describe daemonset 'node-exporter'
 ```
 
-*Obs: `ReplicaSet` é o que faz a replica do pod, deployment gerencia replicasSets.*
-
-*Obs: O template do pod foi criado manualmente, o deployment é feito com o comando.*
-<br>
-
-###### Detalhes do deployment
+###### Visualizar se o DaemonSet criou um pod em cada nó existente
 ``` bash
-kubectl describe deployment 'nginx-deployment'
+kubectl get pods -o wide -l 'app=node-exporter'
 ```
 
-###### Atualizar deployment (depois de mudar o yaml)
+###### Verificar se o DaemonSet está gerenciando os pods
 ``` bash
-kubectl apply -f 'deployment.yaml'
+kubectl describe daemonset 'node-exporter'
 ```
+
+###### Removendo DaemonSet
+``` bash
+kubectl delete daemonset 'node-exporter'
+```
+
+---
+### Aumentando o número de Nós do Cluster
+
+###### Adicionar nó pelo minikube
+``` bash
+minikube node add
+
+minikube node add --nodes 3
+```
+---
