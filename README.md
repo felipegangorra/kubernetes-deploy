@@ -16,8 +16,11 @@ Estudos e práticas abordadas durante a leitura do livro: Descomplicando Kuberne
 
 *Dia 4* - Falando sobre ReplicaSets e DaemonSets
 
-*Dia 5* - Kubernetes na prática 
+<br>
+
+*`Obs:` estamos usando `minikube/kind` para práticar!*
+*`Obs:` vamos só até o dia 4 do livro!*
 
 <br>
 
-*`Obs:` do dia 1 ao 4 estamos usando `minikube` para práticar!*
+> Ferramenta: Kubernetes
