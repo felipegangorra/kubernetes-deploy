@@ -19,6 +19,7 @@ Estudos e práticas abordadas durante a leitura do livro: Descomplicando Kuberne
 <br>
 
 *`Obs:` estamos usando `minikube/kind` para práticar!*
+
 *`Obs:` vamos só até o dia 4 do livro!*
 
 <br>
